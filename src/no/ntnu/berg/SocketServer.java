@@ -4,13 +4,19 @@ import java.io.*;
 import java.net.*;
 
 /**
- *
+ * The socket server waits for an connection with a client before sending the client to the client handler.
+ * The server can handle multiple clients.
+ * 
  * @author Alexander Eilert Berg
+ * @version 0.1
  */
 public class SocketServer
 {
 
     /**
+     * Starts the server. 
+     * Creates the sockets for the server and the connection with the clients.
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args)
@@ -53,6 +59,11 @@ public class SocketServer
         }
     }
 
+    /**
+     * Prints the received string
+     * 
+     * @param message 
+     */
     public static void echo(String message)
     {
         System.out.println(message);
