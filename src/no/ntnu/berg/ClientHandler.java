@@ -2,6 +2,8 @@ package no.ntnu.berg;
 
 import java.io.*;
 import java.net.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,18 +24,27 @@ public class ClientHandler extends Thread
        try 
        {
            //Get socket writing and reading streams
-           DataInputStream messageIn = new 
+           DataInputStream messageIn = new DataInputStream(connection.getInputStream());
+           PrintStream messageOut = new PrintStream(connection.getOutputStream());
+           
+           //Sending welcome
+           messageOut.println("Welcome to the server!   ***Server Version 0.1***");
+           
+           //Reading input from client
+           while((line = messageIn.readLine()) != null && !line.equals("."))
+           {
+               //Test reply with the same message
+               messageOut.println("I got: " + line);
+           }
+           
+           // Client disconnected, close socket
+           connection.close();
+          
+       } catch (IOException ex)
+       {
+           System.out.println("IOException on sockek: " + ex);
+           ex.printStackTrace();
        }
        
    }
 }
-            //Input and output streams
-            messageOut = new PrintStream(connection.getOutputStream());
-            messageOut.flush();
-            messageIn = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            
-            messageOut.println("Welcome to the server!   ***Server Version 0.1***");
-            messageOut.flush();
-
-
-        
