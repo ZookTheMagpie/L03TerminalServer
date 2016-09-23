@@ -2,8 +2,6 @@ package no.ntnu.berg;
 
 import java.io.*;
 import java.net.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -32,12 +30,12 @@ public class SocketServer
             {
                 //Get the connection socket
                 connection = socket.accept();
-                
+
                 //Printing hostname and portnumber
                 echo("Connection recived from " + connection.getInetAddress().getHostAddress() + " : " + connection.getPort());
-                
+
                 //Create a new thread to handle client
-                new ClientHandler (connection).start();
+                new ClientHandler(connection).start();
             }
 
         } catch (IOException ex)

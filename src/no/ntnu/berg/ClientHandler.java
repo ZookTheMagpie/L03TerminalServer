@@ -13,11 +13,12 @@ public class ClientHandler extends Thread
 {
    private Socket connection;
 
-    public ClientHandler()
+    public ClientHandler(Socket incomingConnection)
     {  
+      this.connection = incomingConnection;
     }
 
-   public void start()
+   public void run()
    {
        String line , input = "";
        
