@@ -8,10 +8,7 @@ import java.util.List;
  */
 public class ServerCommands
 {
-    //Contains an array of all commands
-    private String[] validCommands =
-    {"time","help","command","weather"};
-    
+   
     /*
     * Generates the implimented commnds  
     */
