@@ -2,8 +2,6 @@ package no.ntnu.berg;
 
 import java.io.*;
 import java.net.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * The Client handler is responsible for handling the client.
@@ -25,6 +23,10 @@ public class ClientHandler extends Thread
     public ClientHandler(Socket incomingConnection)
     {
         this.connection = incomingConnection;
+        
+        //Create commands
+        ServerCommands command = new ServerCommands();
+        
 
         //Get socket writing and reading streams
         try
@@ -54,11 +56,15 @@ public class ClientHandler extends Thread
         {
             //Sending welcome message
             welcomeMessage();
+            showMenu();
 
             //User Interface
             while ((line = messageIn.readLine()) != null && !line.equals("."))
             {
-
+                //Take line in and run in server command
+                
+                
+                
             }
 
             // Client disconnected, close socket
@@ -77,7 +83,7 @@ public class ClientHandler extends Thread
      */
     private void welcomeMessage()
     {
-        messageOut.println("                Welcome to the server!   ***Server Version 0.1***");
+        messageOut.println("                Welcome to the server!   ***Server Version 0.1*** Created by Alexander Eilert Berg");
         messageOut.println("Please use the commands below, use Help to dispaly more informatio, use Quit to exit the server");
     }
     
