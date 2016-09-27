@@ -21,6 +21,7 @@ public class HelpCommand implements CommandWord
     public String process(String[] arguments)
     {
         
+        
     }
 
     @Override
