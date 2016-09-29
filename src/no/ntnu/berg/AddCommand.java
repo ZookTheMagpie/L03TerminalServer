@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package no.ntnu.berg;
 
 import java.util.ArrayList;
@@ -11,18 +6,19 @@ import java.util.ArrayList;
  *
  * @author Alexander Eilert Berg
  */
-public class HelpCommand implements CommandWord
+class AddCommand implements CommandWord
 {
+
     @Override
     public String getName()
     {
-        return "Help"; 
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String process(ArrayList<String> arguments)
-    {    
-         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String process(String[] arguments)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

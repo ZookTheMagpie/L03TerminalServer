@@ -3,6 +3,7 @@ package no.ntnu.berg;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -12,18 +13,20 @@ import java.util.Set;
  * @author Alexander Eilert Berg
  * @version 0.1
  */
-public class ServerCommands
+public class OldServerCommands
 {
-
     //Contains a map of the avalible commands mapped to their name in a string.
     private HashMap<String, CommandWord> commands;
+    //Contains the user input after formatting.
+    private ArrayList<String> cleanInput;
 
     /*
     * Generates the basic commands and adds them to the commands list.  
      */
-    public ServerCommands()
+    public OldServerCommands()
     {
         this.commands = new HashMap<>();
+        this.cleanInput = new ArrayList<>();
         HelpCommand helpCommand = new HelpCommand();
         TimeCommand timeCommand = new TimeCommand();
         AddCommand addCommand = new AddCommand();
@@ -35,20 +38,32 @@ public class ServerCommands
         commands.put("weather", weatherCommand);
     }
 
-    public String executeCommand(String userInput)
+    public String executeCommand(String Userinput)
     {
-        String returnString = "";
-        CommandParser cleanUserInput = new CommandParser(userInput);
+        String returnString = "executed";
 
-        if (!checkIfValid(cleanUserInput.getName()))
+      //  cleanInput(Userinput);
+        if (!checkIfValid())
         {
             returnString = "error";
-        } else if ("quit".equals(cleanUserInput.getName()))
+        } else if ("quit".equals(cleanInput.get(0)))
         {
             returnString = "quit";
         } else
         {
-            commands.get(cleanUserInput.getName()).process(cleanUserInput.getAllArgs());
+            Set<String> keySet = commands.keySet();
+            Iterator keySetIterator = keySet.iterator();
+            while (keySetIterator.hasNext())
+            {
+                Iterator inputIterator = cleanInput.iterator();
+                while (inputIterator.hasNext())
+                {
+                    if (commands.containsKey(inputIterator.next()))
+                    {
+                        returnString = commands.get(inputIterator).process(cleanInput);                                                                
+                    }
+                }
+            }
         }
         return returnString;
     }
@@ -75,14 +90,33 @@ public class ServerCommands
      * @param input
      * @return Returns true if command valid or false if not.
      */
-    private boolean checkIfValid(String command)
+    private boolean checkIfValid()
     {
         boolean valid = false;
-        if (commands.get(command) != null)
+        Set<String> keySet = commands.keySet();
+        Iterator keySetIterator = keySet.iterator();
+        while (keySetIterator.hasNext())
         {
-            valid = true;
+            Iterator inputIterator = cleanInput.iterator();
+            while (inputIterator.hasNext())
+            {
+                if (commands.containsKey(inputIterator.next()))
+                {
+                    valid = true;
+                }
+            }
         }
         return valid;
     }
 
+    /**
+     * Takes the input string and cleans it up.
+     *
+     * @param input
+     */
+    private void cleanInput(String input)
+    {
+        Parser cleaner = new Parser();
+        this.cleanInput = cleaner.clean(input);
+    }
 }

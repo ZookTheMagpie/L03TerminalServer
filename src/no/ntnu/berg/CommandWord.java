@@ -1,5 +1,7 @@
 package no.ntnu.berg;
 
+import java.util.ArrayList;
+
 /**
  * Interface for a single command supported by the server
  * 

@@ -1,5 +1,6 @@
 package no.ntnu.berg;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import static javafx.util.Duration.millis;
 
@@ -30,7 +31,7 @@ class TimeCommand implements CommandWord
      * Returns the current server time in Hours,minutes,seconds format.
      * Currently does not support any additional arguments.
      *
-     * @param arguments
+     * @param arguments additional arguments,currently not in use.
      * @return Returns the current server time in Hours,minutes,seconds format.
      */
     @Override
