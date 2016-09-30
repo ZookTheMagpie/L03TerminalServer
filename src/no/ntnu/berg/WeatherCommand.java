@@ -2,7 +2,6 @@ package no.ntnu.berg;
 
 import java.io.*;
 import java.net.*;
-import java.util.ArrayList;
 
 /**
  * This command returns the weather report from the default area (Aalesund).  

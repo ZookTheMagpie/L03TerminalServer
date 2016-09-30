@@ -33,7 +33,6 @@ public class Parser
             cleanedString.add(match.group());
             currentWords ++;
         }
-        
         return cleanedString;
     }
 }

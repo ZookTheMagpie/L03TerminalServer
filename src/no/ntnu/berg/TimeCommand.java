@@ -1,8 +1,9 @@
 package no.ntnu.berg;
 
-import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
-import static javafx.util.Duration.millis;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * This command returns the current server time for the server in the hours,
@@ -37,15 +38,10 @@ class TimeCommand implements CommandWord
     @Override
     public String process(String[] arguments)
     {
-        Long millis = System.currentTimeMillis();
+        DateFormat dataFormat = new SimpleDateFormat("HH:mm");
+         Calendar calendar = Calendar.getInstance();
 
-        String time = String.format("%02d:%02d:%02d",
-                TimeUnit.MILLISECONDS.toHours(millis),
-                TimeUnit.MILLISECONDS.toMinutes(millis)
-                - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
-                TimeUnit.MILLISECONDS.toSeconds(millis)
-                - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
-        String returnString = "The current server time is: " + time;
+        String returnString = "The current server time is: " + dataFormat.format(calendar.getTime()) + dataFormat.format(calendar.getTimeZone());
         return returnString;
     }
 
@@ -74,3 +70,15 @@ class TimeCommand implements CommandWord
     }
 
 }
+
+/**
+ * 	   DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	   //get current date time with Date()
+	   Date date = new Date();
+	   System.out.println(dateFormat.format(date));
+
+	   //get current date time with Calendar()
+	   Calendar cal = Calendar.getInstance();
+	   System.out.println(dateFormat.format(cal.getTime()));
+
+ */

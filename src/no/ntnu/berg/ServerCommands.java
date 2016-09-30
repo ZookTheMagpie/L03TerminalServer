@@ -26,12 +26,10 @@ public class ServerCommands
         this.commands = new HashMap<>();
         HelpCommand helpCommand = new HelpCommand();
         TimeCommand timeCommand = new TimeCommand();
-        AddCommand addCommand = new AddCommand();
         WeatherCommand weatherCommand = new WeatherCommand();
 
         commands.put("help", helpCommand);
         commands.put("time", timeCommand);
-        commands.put("add", addCommand);
         commands.put("weather", weatherCommand);
     }
 
@@ -43,12 +41,12 @@ public class ServerCommands
         if (!checkIfValid(cleanUserInput.getName()))
         {
             returnString = "error";
-        } else if ("quit".equals(cleanUserInput.getName()))
+        } else if ("quit".equals(cleanUserInput.getName())) //TODO: FIX THIS!!!!
         {
             returnString = "quit";
         } else
         {
-            commands.get(cleanUserInput.getName()).process(cleanUserInput.getAllArgs());
+            returnString = commands.get(cleanUserInput.getName()).process(cleanUserInput.getArgArray());
         }
         return returnString;
     }

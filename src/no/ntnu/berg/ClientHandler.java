@@ -115,7 +115,6 @@ public class ClientHandler extends Thread
         messageOut.println("Commands: ");
         messageOut.println("Time");
         messageOut.println("Weather");
-        messageOut.println("Command");
         messageOut.println("Help");
         messageOut.println("Quit");
         messageOut.println();
@@ -128,10 +127,10 @@ public class ClientHandler extends Thread
     private void invalidInputMessage()
     {
         messageOut.println("Your commands were invalid, please try again!");
-        messageOut.println("\n" + "Here are some suggestions for writing the commands: " + "\n");
-        messageOut.println("Try using only small letters and with have a space between each word" + "\n"
-                + "Try typing help to see the avalible commands and their valid arguments" + "\n"
-                + "If you type 'help' and then another commandword you will get a more detailed description of that command" + "\n"
-                + "Please try again and, thank you for your patience");
+        messageOut.println("Here are some suggestions for writing the commands: ");
+        messageOut.println("Try using only small letters and with have a space between each word");
+        messageOut.println("Try typing help to see the avalible commands and their valid arguments");
+        messageOut.println("If you type 'help' and then another commandword you will get a more detailed description of that command");
+        messageOut.println("Please try again and, thank you for your patience");
     }
 }
