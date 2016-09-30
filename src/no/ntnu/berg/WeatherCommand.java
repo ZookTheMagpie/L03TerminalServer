@@ -18,7 +18,7 @@ class WeatherCommand implements CommandWord
      * @return Returns the name of the command
      */
     @Override
-    public String getName()
+    public String getName(
     {
         return "Weather"; 
     }

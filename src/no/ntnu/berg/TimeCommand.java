@@ -1,13 +1,12 @@
 package no.ntnu.berg;
 
-import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
  * This command returns the current server time for the server in the hours,
- * minutes, seconds format. The command doses currently not support any
+ * minutes format. The command doses currently not support any
  * additional arguments.
  *
  * @author Alexander Eilert Berg
@@ -29,11 +28,11 @@ class TimeCommand implements CommandWord
     }
 
     /**
-     * Returns the current server time in Hours,minutes,seconds format.
+     * Returns the current server time in Hours,minutes format.
      * Currently does not support any additional arguments.
      *
      * @param arguments additional arguments,currently not in use.
-     * @return Returns the current server time in Hours,minutes,seconds format.
+     * @return Returns the current server time in Hours,minutes format.
      */
     @Override
     public String process(String[] arguments)
@@ -41,7 +40,7 @@ class TimeCommand implements CommandWord
         DateFormat dataFormat = new SimpleDateFormat("HH:mm");
          Calendar calendar = Calendar.getInstance();
 
-        String returnString = "The current server time is: " + dataFormat.format(calendar.getTime()) + dataFormat.format(calendar.getTimeZone());
+        String returnString = "The current server time is: " + dataFormat.format(calendar.getTime());
         return returnString;
     }
 
@@ -65,7 +64,9 @@ class TimeCommand implements CommandWord
     @Override
     public String getLongDesc()
     {
-        String returnString = "This command displays the server time in the Hours Minutes Secounds format";
+        String returnString = "This command displays the server time in the Hours Minutes format." + "\n" +
+                              "Example: 'The current server time is: 09:19";
+        
         return returnString;
     }
 

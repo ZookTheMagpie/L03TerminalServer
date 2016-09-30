@@ -74,7 +74,7 @@ public class ClientHandler extends Thread
                     {
                         messageOut.println("Farewell");
                         running = false;
-                    } else if (returnCommandString.contains("error"))
+                    } else if (returnCommandString.contains("invalid"))
                     {
                         invalidInputMessage();
                     } else
@@ -114,7 +114,7 @@ public class ClientHandler extends Thread
         messageOut.println();
         messageOut.println("Commands: ");
         messageOut.println("Time");
-        messageOut.println("Weather");
+       //messageOut.println("Weather");
         messageOut.println("Help");
         messageOut.println("Quit");
         messageOut.println();
@@ -130,7 +130,8 @@ public class ClientHandler extends Thread
         messageOut.println("Here are some suggestions for writing the commands: ");
         messageOut.println("Try using only small letters and with have a space between each word");
         messageOut.println("Try typing help to see the avalible commands and their valid arguments");
-        messageOut.println("If you type 'help' and then another commandword you will get a more detailed description of that command");
+        messageOut.println("If you type 'help' and then another commandword");
+        messageOut.println("you will get a more detailed description of that command");
         messageOut.println("Please try again and, thank you for your patience");
     }
 }

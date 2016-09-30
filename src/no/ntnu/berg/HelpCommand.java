@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package no.ntnu.berg;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -13,28 +8,47 @@ import java.util.ArrayList;
  */
 public class HelpCommand implements CommandWord
 {
+
+    private HashMap availableCommands;
+
     @Override
     public String getName()
     {
-        return "Help"; 
+        return "Help";
     }
 
+    /**
+     * Returns a string containing the help message. If the command had an
+     * argument(another command),it will return the long description of that
+     * command. If no extra argument was given it will return a list of the
+     * current available commands.
+     *
+     * @param arguments
+     * @return Returns a string with the help message.
+     */
     @Override
-    public String process(ArrayList<String> arguments)
-    {    
-         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String process(String[] arguments)
+    {
+        
     }
 
     @Override
     public String getShortDesc()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String returnString = "These are the available commands :" + "\n";
+    
+        return returnString;
     }
 
     @Override
     public String getLongDesc()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
-    
+
+    void storeCommands(HashMap<String, CommandWord> commands)
+    {
+        this.availableCommands = new HashMap<>();
+        commands = this.availableCommands;
+    }
 }
